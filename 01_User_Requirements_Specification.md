@@ -1,26 +1,111 @@
-# Document 1: User Requirements Specification
-**Project:** Grill & Go Ordering System
-**Module:** Software Engineering
+# Document 1: User Requirements Specification (URS)
+**Project:** Grill & Go Digital Ordering & Fulfillment System  
+**Client:** Uncle Bob (Grill & Go, Orchard Road)  
+**Module:** Software Engineering  
 
 ---
 
-## 1. User Stories & Acceptance Criteria
+## 1. Agile User Stories & BDD Acceptance Criteria
 
-### User Story 1: Customer Scans QR Code
+### US-01: Table QR Code Menu Access & Customization (Customer)
 * **As a** Customer sitting at a table,
-* **I want to** scan a table-specific QR code to open the menu on my phone browser,
-* **So that** I can customize my order without downloading an app or waiting in line.
+* **I want to** scan a table-specific QR code to view the menu on my mobile browser[cite: 1],
+* **So that** I can customize my order (steak doneness, side dishes) without downloading an app or waiting in line[cite: 1].
 
 **Acceptance Criteria (Given-When-Then):**
-* **Given** I am seated at Table 5 and scan the QR code,
-* **When** the menu loads in my mobile browser,
-* **Then** I should see the full menu with options to select steak doneness and side dishes.
+* **Given** I am seated at Table 5 and scan the table QR code on my mobile phone[cite: 1],
+* **When** the web menu loads[cite: 1],
+* **Then** I should see the full menu with customization options (e.g., Medium Rare, Mashed Potato)[cite: 1].
 
 ---
 
-## 2. Client Sign-Off
+### US-02: Immediate Digital Payment (Customer)
+* **As a** Customer[cite: 1],
+* **I want to** pay immediately via PayNow QR or Credit Card prior to order submission[cite: 1],
+* **So that** my payment is confirmed instantly and sent directly to the kitchen[cite: 1].
 
-| Approval Role | Stakeholder Name | Organization / Position | Approval Status | Timestamp (SGT) | Digital Sign-Off (Git ID) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Client / Business Owner** | Uncle Bob | Owner, Grill & Go (Orchard Road) | **APPROVED** | 2026-10-12 14:30 | `@your-github-username` |
-| **Lead Systems Analyst** | Your Name | SE Solutions Project Lead | **APPROVED** | 2026-10-12 14:30 | `@your-github-username` |
+**Acceptance Criteria (Given-When-Then):**
+* **Given** I have items in my digital cart[cite: 1],
+* **When** I proceed to checkout and select "PayNow QR"[cite: 1],
+* **Then** a dynamic PayNow QR code is displayed, and upon payment, my order is sent to the kitchen display system[cite: 1].
+
+---
+
+### US-03: Real-Time Order Display on Kitchen Tablet (Kitchen Staff)
+* **As a** Kitchen Staff member[cite: 1],
+* **I want to** view incoming paid orders in real time on the Kitchen Display System (KDS) tablet[cite: 1],
+* **So that** our team can prepare meals accurately in the order they were received[cite: 1].
+
+**Acceptance Criteria (Given-When-Then):**
+* **Given** a customer completes payment for an order[cite: 1],
+* **When** the payment is verified by the backend[cite: 1],
+* **Then** the order appears instantly on the KDS tablet screen with item details and table number[cite: 1].
+
+---
+
+### US-04: Kitchen Order Status Updates (Kitchen Staff)
+* **As a** Kitchen Staff member[cite: 1],
+* **I want to** update the status of an order (`Pending` → `Preparing` → `Ready for Pickup`)[cite: 1],
+* **So that** customers know when their meal is ready for collection[cite: 1].
+
+**Acceptance Criteria (Given-When-Then):**
+* **Given** an order is currently in `Preparing` status[cite: 1],
+* **When** I tap `Mark as Ready` on the KDS tablet[cite: 1],
+* **Then** the order status updates to `Ready for Pickup` and notifies the customer display screen[cite: 1].
+
+---
+
+### US-05: Real-Time Menu Item Override (Store Manager)
+* **As a** Store Manager[cite: 1],
+* **I want to** toggle menu items as "Out of Stock" in real time[cite: 1],
+* **So that** customers cannot place orders for items that have run out[cite: 1].
+
+**Acceptance Criteria (Given-When-Then):**
+* **Given** the stall has run out of Sirloin Steak[cite: 1],
+* **When** I toggle "Sirloin Steak" to "Out of Stock" on the manager interface[cite: 1],
+* **Then** the item immediately displays as "Sold Out" on all customer mobile browser menus[cite: 1].
+
+---
+
+### US-06: Off-the-Shelf BI Tool Sales Analytics (Store Manager / Owner)
+* **As** Uncle Bob (Owner)[cite: 1],
+* **I want to** connect Power BI or Tableau directly to the transactional database[cite: 1],
+* **So that** I can analyze peak-hour sales trends and revenue without custom reporting modules[cite: 1].
+
+**Acceptance Criteria (Given-When-Then):**
+* **Given** sales data stored in the relational database[cite: 1],
+* **When** Power BI connects to the transactional database via standard SQL drivers[cite: 1],
+* **Then** dynamic dashboards display peak order hours and total monthly sales[cite: 1].
+
+---
+
+## 2. UML Use Case Diagram
+
+```mermaid
+usecaseDiagram
+    actor Customer as "Customer"
+    actor KitchenStaff as "Kitchen Staff"
+    actor Manager as "Store Manager"
+    actor PayNow as "PayNow Gateway"
+    actor BI as "Power BI / Tableau"
+
+    package "Grill & Go System" {
+        usecase UC1 as "Browse Menu & Customize Order"
+        usecase UC2 as "Place Order"
+        usecase UC3 as "Make Payment"
+        usecase UC4 as "View Incoming Orders (KDS)"
+        usecase UC5 as "Update Order Status"
+        usecase UC6 as "Toggle Menu Item Availability"
+        usecase UC7 as "Generate Sales & Revenue Reports"
+    }
+
+    Customer --> UC1
+    Customer --> UC2
+    UC2 .-> UC3 : <<include>>
+    UC3 --> PayNow
+
+    KitchenStaff --> UC4
+    KitchenStaff --> UC5
+
+    Manager --> UC6
+    BI --> UC7
