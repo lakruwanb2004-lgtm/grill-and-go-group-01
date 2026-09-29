@@ -82,12 +82,6 @@
 ## 2. UML Use Case Diagram
 
 ```mermaid
-
-Delete everything **inside that Mermaid block**.
-
-Replace it with this:
-
-```mermaid
 flowchart LR
 
     Customer["Customer"]
@@ -160,17 +154,7 @@ flowchart LR
 
     BI --> UC7
 
----
 
-## Step 3 — Commit the change
 
-After replacing it, scroll down and click:
-
-**Commit changes**
-
-For the commit message, use:
-
-```text
-Fix UML use case diagram rendering
 
     
