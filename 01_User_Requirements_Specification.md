@@ -81,43 +81,6 @@
 
 ## 2. UML Use Case Diagram
 
-```mermaid
-flowchart LR
-
-    Customer["Customer"]
-    KitchenStaff["Kitchen Staff"]
-    Manager["Store Manager"]
-    PayNow["PayNow Gateway"]
-    BI["Power BI / Tableau"]
-
-    subgraph System["Grill & Go System"]
-        UC1(["Browse Menu & Customize Order"])
-        UC2(["Place Order"])
-        UC3(["Make Payment"])
-        UC4(["View Incoming Orders (KDS)"])
-        UC5(["Update Order Status"])
-        UC6(["Toggle Menu Item Availability"])
-        UC7(["Generate Sales & Revenue Reports"])
-    end
-
-    Customer --> UC1
-    Customer --> UC2
-
-    UC2 -. "<<include>>" .-> UC3
-    UC3 --> PayNow
-
-    KitchenStaff --> UC4
-    KitchenStaff --> UC5
-
-    Manager --> UC6
-    Manager --> UC7
-
-    BI --> UC7
-
-at the end.
-
-So the complete section should look like:
-
 ```markdown
 ## 2. UML Use Case Diagram
 
