@@ -120,5 +120,4 @@ The following stakeholders have reviewed the User Requirements Specification for
 | Approval Role | Stakeholder Name | Organization / Position | Approval Status | Timestamp (SGT) | Digital Sign-Off (Git ID) |
 |---|---|---|---|---|---|
 | Client / Business Owner | Uncle Bob | Owner, Grill & Go | APPROVED | 29/09/2026 10:00 | uncle-bob-demo |
-| Lead Systems Analyst | [Kaveesha Rajapaksha] | Student Project Team | APPROVED | 29/09/2026 10:30 | [
-lakruwanb2004-lgtm] |
+| Lead Systems Analyst | [Kaveesha Rajapaksha] | Student Project Team | APPROVED | 29/09/2026 10:30 | [lakruwanb2004-lgtm] |
