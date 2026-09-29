@@ -30,7 +30,6 @@
 * **Then** a dynamic PayNow QR code is displayed, and upon payment, my order is sent to the kitchen display system[cite: 1].
 
 ---
-
 ### US-03: Real-Time Order Display on Kitchen Tablet (Kitchen Staff)
 * **As a** Kitchen Staff member[cite: 1],
 * **I want to** view incoming paid orders in real time on the Kitchen Display System (KDS) tablet[cite: 1],
