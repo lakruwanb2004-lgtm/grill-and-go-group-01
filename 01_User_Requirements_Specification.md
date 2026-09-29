@@ -82,30 +82,95 @@
 ## 2. UML Use Case Diagram
 
 ```mermaid
-usecaseDiagram
-    actor Customer as "Customer"
-    actor KitchenStaff as "Kitchen Staff"
-    actor Manager as "Store Manager"
-    actor PayNow as "PayNow Gateway"
-    actor BI as "Power BI / Tableau"
 
-    package "Grill & Go System" {
-        usecase UC1 as "Browse Menu & Customize Order"
-        usecase UC2 as "Place Order"
-        usecase UC3 as "Make Payment"
-        usecase UC4 as "View Incoming Orders (KDS)"
-        usecase UC5 as "Update Order Status"
-        usecase UC6 as "Toggle Menu Item Availability"
-        usecase UC7 as "Generate Sales & Revenue Reports"
-    }
+Delete everything **inside that Mermaid block**.
+
+Replace it with this:
+
+```mermaid
+flowchart LR
+
+    Customer["Customer"]
+    KitchenStaff["Kitchen Staff"]
+    Manager["Store Manager"]
+    PayNow["PayNow Gateway"]
+    BI["Power BI / Tableau"]
+
+    subgraph System["Grill & Go System"]
+        UC1(["Browse Menu & Customize Order"])
+        UC2(["Place Order"])
+        UC3(["Make Payment"])
+        UC4(["View Incoming Orders (KDS)"])
+        UC5(["Update Order Status"])
+        UC6(["Toggle Menu Item Availability"])
+        UC7(["Generate Sales & Revenue Reports"])
+    end
 
     Customer --> UC1
     Customer --> UC2
-    UC2 .-> UC3 : <<include>>
+
+    UC2 -. "<<include>>" .-> UC3
     UC3 --> PayNow
 
     KitchenStaff --> UC4
     KitchenStaff --> UC5
 
     Manager --> UC6
+    Manager --> UC7
+
     BI --> UC7
+
+at the end.
+
+So the complete section should look like:
+
+```markdown
+## 2. UML Use Case Diagram
+
+```mermaid
+flowchart LR
+
+    Customer["Customer"]
+    KitchenStaff["Kitchen Staff"]
+    Manager["Store Manager"]
+    PayNow["PayNow Gateway"]
+    BI["Power BI / Tableau"]
+
+    subgraph System["Grill & Go System"]
+        UC1(["Browse Menu & Customize Order"])
+        UC2(["Place Order"])
+        UC3(["Make Payment"])
+        UC4(["View Incoming Orders (KDS)"])
+        UC5(["Update Order Status"])
+        UC6(["Toggle Menu Item Availability"])
+        UC7(["Generate Sales & Revenue Reports"])
+    end
+
+    Customer --> UC1
+    Customer --> UC2
+
+    UC2 -. "<<include>>" .-> UC3
+    UC3 --> PayNow
+
+    KitchenStaff --> UC4
+    KitchenStaff --> UC5
+
+    Manager --> UC6
+    Manager --> UC7
+
+    BI --> UC7
+
+---
+
+## Step 3 — Commit the change
+
+After replacing it, scroll down and click:
+
+**Commit changes**
+
+For the commit message, use:
+
+```text
+Fix UML use case diagram rendering
+
+    
